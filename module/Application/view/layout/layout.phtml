@@ -1,0 +1,87 @@
+<?php echo $this->doctype(); ?>
+
+<?php 
+	$siteName = "Food Schemer";
+	$siteName = "Chef's Accomplish";
+	$siteName = "Esculents Assistant";
+	$siteName = "Nutrition Intentions";
+	$siteName = "Sustenance Ally";
+	$siteName = "Grub Builder";
+	$siteName = "Meal Assembler";
+	$siteName = "Chow Planner";
+	$siteName = "Fare Agenda" ;
+	$siteName = "Nutrition Architect" ;
+
+?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate($siteName))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+
+        <!-- Styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        //->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
+                        //->prependStylesheet($this->basePath() . '/css/style.css')
+                        //->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') 
+                        //->prependStylesheet($this->basePath() . '/css/bootstrap.css') ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                                      //->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                                      //->prependFile($this->basePath() . '/js/jquery.min.js') ?>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    </head>
+    <body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<!---->
+			<div class="container">
+		   	<!---->
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active">
+							<a href="#">Home</a>
+						</li>	
+						<li>
+							<a href="#">My Foods</a>
+						</li>	
+						<li>
+							<a href="#">Nutrient Goals</a>
+						</li>	
+					</ul>
+					<form class="navbar-form pull-right" >
+						<input class="span2" type="text" placeholder="Email">
+						<input class="span2" type="password" placeholder="Password">
+						<button type="submit" class="btn">Sign in</button>
+					</form>
+				</div>
+			<!---->
+			</div>
+			<!---->
+		</div>
+		
+	</div>
+	<div class="container">
+		<div class="hero-unit darker">
+			<img id="icon" src="/img/icon.png" class="pull-left"></img>
+			<h1><?php echo $siteName ?></h1>
+			<p>This site is currently just a concept. The goal of <?php echo $siteName ?> is to help plan meals and grocery shopping and to help meet weekly nutrition goals. Start by adding a food to the "Available" row, then drag it to the "Eat" row to use up a portion.</p>
+		</div>
+	</div> <!-- /container -->
+	<?php echo $this->content; ?>
+	<?php echo $this->inlineScript() ?>
+				<script type="text/javascript">
+				<?php 
+					$sm = $this->getHelperPluginManager()->getServiceLocator();
+					$params = $sm->get('Application')->getMvcEvent()->getRouteMatch()->getParams();
+					$controller = ucfirst($params['controller']);
+					$action = ucfirst($params['action']);
+					$function = '$().food("init' . stripslashes($controller) . $action . '");';
+					echo $function;
+				?>
+				</script>
+	</body>
+</html>

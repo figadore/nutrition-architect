@@ -1,0 +1,128 @@
+<?php 
+$rows = array(
+	array(
+		"title"=>"Shop",
+		"gridKey"=>"shop",
+		"entryListClass"=>"shop-entries",
+		"visible"=>false,
+		"icon"=>'/img/shop-icon.png',
+	),
+	array(
+		"title"=>"Prepare",
+		"gridKey"=>"prepare",
+		"entryListClass"=>"prepare-entries",
+		"visible"=>false,
+		"icon"=>'/img/prepare-icon.png',
+	),
+	array(
+		"title"=>"Available",
+		"gridKey"=>"available",
+		"entryListClass"=>"available-entries",
+		"visible"=>true,
+		"icon"=>'/img/available-icon.png',
+	),
+	array(
+		"title"=>"Eat",
+		"gridKey"=>"eat",
+		"entryListClass"=>"eat-entries",
+		"visible"=>true,
+		"icon"=>'/img/eat-icon.png',
+	),
+);
+//$rows = array_reverse($rows);
+?>
+<div class="week container">
+	<div class="week-title row-fluid">
+		<div class="seventh cell"><h4>Monday</h4></div>
+		<div class="seventh cell"><h4>Tuesday</h4></div>
+		<div class="seventh cell"><h4>Wednesday</h4></div>
+		<div class="seventh cell"><h4>Thursday</h4></div>
+		<div class="seventh cell"><h4>Friday</h4></div>
+		<div class="seventh cell"><h4>Saturday</h4></div>
+		<div class="seventh cell"><h4>Sunday</h4></div>
+	</div>
+	<div class="section-rows">
+		<?php foreach ($rows as $row): ?>
+			<div class="row-fluid section-row">
+				<div class="week-header span12"><h5><?php echo $row['title']; ?></h5>
+					<div class="row-fluid" <?php echo $row['visible']?"style=\"display:block;\"":"style=\"display:none\""; ?> >
+						<?php if ($row['gridKey'] !== "shop"): ?>
+							<img class="row-icon" src="<?php echo $row['icon']; ?>" />
+						<?php endif; ?>
+						<?php
+						foreach ($this->grid[$row['gridKey']] as $day):
+						?>
+							<div class="seventh cell day">
+								<div class="food-entries <?php echo $row['entryListClass']; ?>">
+									<?php
+									foreach ($day as $entry):
+									?>
+										<div class="food-entry">
+											<div class="entry-container">
+												<div class="portions">
+													<?php
+														echo $this->pie($entry['total'], $entry['remaining']);
+													?>
+												</div><!--/div.portions-->
+												<div class="food-label">
+													<p><?php echo $entry['name'] ?></p>
+												</div><!--/div.food-label-->
+											</div>
+										</div><!--/div.food-entry -->
+										<?php
+									endforeach;
+									?>
+								</div><!--/div.food-entries -->
+								<?php
+								if ($row['gridKey'] === 'shop' && !empty($day)):
+								?>
+									<a class="shopping-list-link" href="#">Get shopping list</a>
+									<?php
+								endif;
+								if (
+									//$row['gridKey'] === 'shop' || 
+									$row['gridKey'] === 'available' || 
+									$row['gridKey'] === 'prepare' || 
+									$row['gridKey'] === 'eat'):
+								?>
+								<div class="add-placeholder"></div>
+								<div class="add">+</div>
+								<?php
+								endif;
+								?>
+							</div><!--/div.day -->
+						<?php
+						endforeach;
+						?>
+					</div><!--/div.row-fluid -->
+				</div><!--/div.week-header -->
+			</div><!--/div.section-row -->
+		<?php
+		endforeach;
+		?>
+		<div class="row-fluid section-row">
+			<div class="week-header span12"><h5>Nutrients</h5>
+				<div class="row-fluid" style="display:none;">
+					<?php for ($i=0; $i<7; $i++): ?>
+						<div class="seventh cell day" >
+						</div><!--/div.day -->
+					<?php endfor; ?>
+				</div><!--/div.row-fluid -->
+			</div><!--/div.week-header -->
+		</div><!--/div.section-row -->
+		<div class="row-fluid section-row">
+			<div class="week-header span12"><h5>Total Nutrients</h5>
+				<div class="row-fluid" style="display:none;">
+					<div class="total-nutrients">
+					</div><!--/div.day -->
+				</div><!--/div.row-fluid -->
+			</div><!--/div.week-header -->
+		</div><!--/div.section-row -->
+	</div><!--/div.section-rows -->
+</div><!--/div.week -->
+<?php
+				//echo '<pre>';
+				//print_r($this->grid);
+				//exit;
+				//echo '</pre>';
+?>

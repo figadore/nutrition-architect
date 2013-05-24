@@ -1,0 +1,305 @@
+@import "/type/museo.css";
+@import "bootstrap.less";
+
+@portion-radius:                 15px;
+@portion-padding:                 2px;
+@rowMinHeight:					80px;
+
+//pie colors
+@pie-line-color: @gray;
+//@pie-missing-line-color: @white;
+@pie-fill-color: @white;
+@pie-line-thickness: .75px;
+
+
+@row-color:@grayDark;
+@row-border-color:@grayLighter;
+@cell-background:@grayDarker;
+@cell-border-color:@grayDark;
+
+
+@round-radius: 5px;
+.rounded
+{
+	-webkit-border-radius:@round-radius;
+	-moz-border-radius:@round-radius;
+	border-radius:@round-radius;
+}
+
+.border-box()
+{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+body
+{
+	background-color:@gray;
+	background-image:url('/img/background-larger.jpg');
+	background-size:100px 100px;
+	background-repeat:repeat;
+}
+
+.hero-unit h1, .hero-unit.darker p
+{
+	color:@grayDarker;
+}
+
+.hero-unit #icon
+{
+	height:170px;
+	width:170px;
+	padding-right:25px;
+}
+
+//override container width
+.navbar-fixed-top .container, .container {
+	width: 1204px;
+}
+
+.seventh
+{
+	//width: 14.2857142857%;
+	width: 172px;
+	//width: 12.5%;
+}
+
+//7 column grid
+.week .seventh {
+	float:left;
+}
+
+.week-title h3, .week-title h4, .week-title h5
+{
+	color:@white;
+	//text-shadow: 0px -1px 0px #000, 0px 1px 0px #FFF;
+	//text-shadow: 0px -1px 1px #FFF, 0px 1px 1px #000;
+}
+
+.week-title div
+{
+	.border-box();
+	background-color:@gray;
+	border:1px solid @grayDarker;
+}
+
+.week-title .spacer
+{
+	border:none;
+	height:42px;
+	background:none;
+}
+
+.row-fluid div.week-header
+{
+	.rounded();
+	position:relative;
+	color:@white;
+	//background-color:@grayDarker;
+	//border:1px solid @grayLighter;
+	background-color:@row-color;
+	border:1px solid @row-border-color;
+	box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	-webkit-box-sizing:content-box;
+	//border:1px solid @grayDarker;
+}
+
+.row-fluid div.week-header h3, .row-fluid div.week-header h4, .row-fluid div.week-header h5
+{
+	cursor:pointer;
+}
+
+.row-fluid h5
+{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+.row-icon
+{
+	position:absolute;
+	left:-134px;
+	top:38px;
+	//border:7px solid white;
+	width:120px;
+}
+
+.week div {
+	text-align:center;
+}
+
+.section-rows
+{
+	.rounded();
+}
+
+.section-row
+{
+	.rounded();
+}
+
+@add-button-height: 20px;
+
+.cell
+{
+	.rounded();
+}
+
+.day {
+	.border-box();
+	padding-top:2*@round-radius;
+	//margin-bottom:2*@round-radius;
+	background-color:@cell-background;
+	min-height:@rowMinHeight;
+	height:100%;
+	border:1px solid @cell-border-color;
+	position:relative;
+	float:left;
+	//padding-bottom:@add-button-height;
+	//margin-bottom:@add-button-height;
+	//overflow:hidden;
+}
+
+.add-placeholder
+{
+	height:@add-button-height;
+}
+
+.add
+{
+	.rounded();
+	cursor:pointer;
+	color:@darkGreen;
+	background-color:@lightGreen;
+	font-size:x-large;
+	position:absolute;
+	width:100%;
+	bottom:0px;
+	//bottom:-@add-button-height;
+	//visibility:hidden;
+	display:block;
+	//height:@add-button-height;
+	height:0px;
+	overflow:hidden;
+	transition:all .5s ease-in-out .1s;
+	-webkit-transition:all .15s ease-in-out .1s;
+	-moz-transition:all .15s ease-in-out .1s;
+}
+
+.day:hover  .add
+{
+	height:@add-button-height;
+	bottom:0px;
+}
+
+.blueprint
+{
+	color:@white;
+	border:5px solid white;
+	background-color:@gray;
+	background-image:url('/img/background-larger.jpg');
+	background-size:20px 20px;
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 2px 2px 4px #333;
+	-webkit-border-radius:0px;
+	-moz-border-radius:0px;
+	border-radius:0px;
+}
+
+//.food-entry
+.entry-container
+{
+	.blueprint();
+	.border-box();
+	.seventh();
+	cursor:pointer;
+	height:(@portion-radius+@portion-padding)*2;
+	//width:100%;
+	//position:relative;
+	display:table;
+	margin-bottom:5px;
+}
+
+.food-entry p
+{
+	text-align:left;
+}
+
+.portions
+{
+	width:(@portion-radius+@portion-padding)*2;
+	display:table-cell;
+	//display:inline-block;
+}
+
+.portions svg
+{
+	//display:inline-block;
+	height:(@portion-radius+@portion-padding)*2;
+}
+
+
+.food-label
+{
+	//margin-top:@portion-radius;
+	//width:
+	height:(@portion-radius+@portion-padding)*2;
+	//display:table;
+	display:table-cell;
+	vertical-align:middle;
+	//position:absolute;
+	//display:inline-block;
+}
+
+@label-lr-padding: 5px;
+.food-label p
+{
+	//display:inline-block;
+	//display:table-cell;
+	line-height:90%;
+	margin:0 @label-lr-padding 0 @label-lr-padding;
+}
+
+.portions .gone
+{
+	fill-opacity:0.0;
+	stroke:@pie-line-color;
+}
+
+.portions .remaining
+{
+	fill:@pie-fill-color;
+	stroke:@pie-line-color;
+}
+
+.portions .divider
+{
+	stroke:@white;
+	stroke-width:@pie-line-thickness;
+	stroke:@pie-line-color;
+}
+
+//.total-nutrients:extend(.day)
+.total-nutrients
+{
+	.day();
+	width:100%;
+}
+
+.food-entries
+{
+	min-height:@rowMinHeight;
+}
+
+.drop-active
+{
+	border:1px solid @black;
+}
+
+.drop-hover
+{
+	background-color:@grayLighter;
+}
