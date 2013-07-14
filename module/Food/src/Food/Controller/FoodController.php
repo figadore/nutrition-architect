@@ -2,11 +2,50 @@
 namespace Food\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Food\Model\Factory\View as ViewFactory;
+use Food\Model\Factory\Model as ModelFactory;
+use Food\Model\Recipe;
 
 class FoodController extends AbstractActionController
 {
+
+	protected $_recipeFactory;
+	protected $_viewFactory;
+
+	public function __construct(ModelFactory $recipeFactory, 
+			ViewFactory $viewFactory)
+	{
+		$this->_recipeFactory = $recipeFactory;
+		$this->_viewFactory = $viewFactory;
+	}
+
+	public function getRecipeFactory()
+	{
+		return $this->_recipeFactory;
+	}
+
+	public function getViewFactory()
+	{
+		return $this->_viewFactory;
+	}
+
 	public function indexAction()
+	{
+		$factory = $this->getRecipeFactory();
+		$recipe = $factory->get('Recipe', array());
+		$recipe->setName("cookies");
+		$recipe->setUserId(5);
+		$recipe2 = $factory->get('Recipe', array());
+		$recipe2->setName("cake");
+		$recipe2->setUserId(6);
+		$recipe->say("mapper works");
+		return $this->getViewFactory()->get('ViewModel', array(
+			'recipe'=>$recipe,
+			'recipe2'=>$recipe2,
+		));
+	}
+
+	public function demoAction()
 	{
 		$grid = array(
 			'shop'=>array(
@@ -152,7 +191,7 @@ class FoodController extends AbstractActionController
 				array(),
 			),
 		);
-		return new ViewModel(array(
+		return $this->getViewFactory()->get('ViewModel', array(
 			'grid'=>$grid,
 		));
 	}

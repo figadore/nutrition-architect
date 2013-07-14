@@ -13,7 +13,8 @@ function drawChart()
 		"colors":["black", "white"],
 		"width":400,
 		"height":300};		
-	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+	var chart = new google.visualization.PieChart(
+			document.getElementById('chart_div'));
 	//chart.draw(data, options);
 
 }

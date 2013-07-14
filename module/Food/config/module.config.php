@@ -1,10 +1,10 @@
 <?php
 return array(
-	'controllers' => array(
-		'invokables' => array(
-			'Food\Controller\Food' => 'Food\Controller\FoodController',
-		),
-	),
+	#'controllers' => array(
+	#	'invokables' => array(
+	#		'Food\Controller\Food' => 'Food\Controller\FoodController',
+	#	),
+	#),
 	'router'=>array(
 		'routes'=>array(
             'home' => array(

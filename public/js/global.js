@@ -7,8 +7,10 @@
 			$(".food-entries").droppable(
 				{
 					//hoverClass: "drop-hover",
-					//over: function(event, ui) { $(this).parent().addClass("drop-hover"); },
-					//out: function(event, ui) { $(this).parent().removeClass("drop-hover"); }
+					//over: function(event, ui) { $(this).parent()
+						//.addClass("drop-hover"); },
+					//out: function(event, ui) { $(this).parent()
+						//.removeClass("drop-hover"); }
 					//activeClass: "drop-active"
 				}
 			);
@@ -69,7 +71,9 @@
 			$(".section-rows").sortable(
 				{
 					cursor: "move",
-					items: ".section-row:not(.cell)", //trying to have only header area draggable, but dragging from in a cell still works
+					//trying to have only header area draggable, but 
+					//dragging from in a cell still works
+					items: ".section-row:not(.cell)", 
 					//helper: "clone",
 					tolerance:"intersect",
 					//containment:"parent"
@@ -93,7 +97,9 @@
 			{
 				$(".row-fluid .row-fluid").each( function(){
 					var max=0; 
-					var sameHeight = 0; //persists through sub iterations to track whether there is a difference in heights
+					//persists through sub iterations to track whether there is 
+					//a difference in heights
+					var sameHeight = 0; 
 					var adjust=false; 
 					$(this).find(".seventh.cell").each(function(){
 						$(this).css('height', 'auto'); 
@@ -107,7 +113,9 @@
 						{
 							sameHeight = height;
 						}
-						if (sameHeight != height) //there is a difference in heights, adjust all to match after done iterating
+						//check if there is a difference in heights, adjust all 
+						//to match after done iterating
+						if (sameHeight != height) 
 						{
 							adjust = true;
 						}
@@ -126,7 +134,8 @@
 	{
 		if (methods[method] )
 		{
-			return methods[ method ].apply(this, Array.prototype.slice.call( arguments, 1));
+			return methods[ method ].apply(this, 
+					Array.prototype.slice.call( arguments, 1));
 		}
 		else if (typeof method === 'object' || !method )
 		{
