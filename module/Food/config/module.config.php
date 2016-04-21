@@ -13,7 +13,7 @@ return array(
                     'route'    => '/',
                     'defaults' => array(
 						'controller'=>'Food\Controller\Food',
-						'action'=>'index',
+						'action'=>'demo',
                     ),
                 ),
             ),

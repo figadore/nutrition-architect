@@ -63,4 +63,9 @@ class AbstractModel
 	{
 		return $this->_mapper;
 	}
+
+	public function setOptions($options = array())
+	{
+		$this->_properties = array_merge($this->_properties, $options);
+	}
 }

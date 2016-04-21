@@ -1,7 +1,7 @@
 (function($)
 {
 	var methods = {
-		initFoodControllerFoodIndex : function()
+		initFoodControllerFoodDemo : function()
 		{
 			equalHeightDays();
 			$(".food-entries").droppable(

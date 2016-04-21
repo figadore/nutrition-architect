@@ -32,13 +32,14 @@ class FoodController extends AbstractActionController
 	public function indexAction()
 	{
 		$factory = $this->getRecipeFactory();
-		$recipe = $factory->get('Recipe', array());
-		$recipe->setName("cookies");
-		$recipe->setUserId(5);
+		$recipe = $factory->get('Recipe', array(
+			'name'=>'cookie',
+			'userId'=>4,
+		));
 		$recipe2 = $factory->get('Recipe', array());
 		$recipe2->setName("cake");
 		$recipe2->setUserId(6);
-		$recipe->say("mapper works");
+		//$recipe->say("mapper works");
 		return $this->getViewFactory()->get('ViewModel', array(
 			'recipe'=>$recipe,
 			'recipe2'=>$recipe2,

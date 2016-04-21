@@ -77,15 +77,15 @@
 	</div> <!-- /container -->
 	<?php echo $this->content; ?>
 	<?php echo $this->inlineScript() ?>
-				<script type="text/javascript">
-				<?php 
-					$sm = $this->getHelperPluginManager()->getServiceLocator();
-					$params = $sm->get('Application')->getMvcEvent()->getRouteMatch()->getParams();
-					$controller = ucfirst($params['controller']);
-					$action = ucfirst($params['action']);
-					$function = '$().food("init' . stripslashes($controller) . $action . '");';
-					echo $function;
-				?>
-				</script>
+		<script type="text/javascript">
+		<?php 
+			$sm = $this->getHelperPluginManager()->getServiceLocator();
+			$params = $sm->get('Application')->getMvcEvent()->getRouteMatch()->getParams();
+			$controller = ucfirst($params['controller']);
+			$action = ucfirst($params['action']);
+			$function = '$().food("init' . stripslashes($controller) . $action . '");';
+			echo $function;
+		?>
+		</script>
 	</body>
 </html>
