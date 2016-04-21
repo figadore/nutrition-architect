@@ -3,7 +3,7 @@ Nutrition Architect
 
 Introduction
 ------------
-This is a concept site for meal planning and nutrition tracking
+This is a concept site for meal planning and nutrition tracking. I never got around to finishing it
 
 Target audience agrees strongly with one of the following
 -"I want to make sure I'm eating all my weekly nutrients" 
